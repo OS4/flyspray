@@ -505,7 +505,8 @@ class Doku_Renderer_xhtml extends Doku_Renderer
         }
 
         //keep hash anchor
-        list($id,$hash) = explode('#',$id,2);
+//        list($id,$hash) = explode('#',$id,2); // $hash has not be defined, prevents comment from appearing and PHP warnings
+        list($id) = explode('#',$id,2);
 
         //prepare for formating
         $link['target'] = $conf['target']['wiki'];
@@ -529,7 +530,7 @@ class Doku_Renderer_xhtml extends Doku_Renderer
         }
 
         //keep hash
-        if($hash) $link['url'].='#'.$hash;
+//        if($hash) $link['url'].='#'.$hash; // $hash has not be defined, prevents comment from appearing and PHP warnings
 
         //output formatted
         if($returnonly){
@@ -969,8 +970,9 @@ class Doku_Renderer_xhtml extends Doku_Renderer
         global $conf;
 
         //if there is a hash we use the ancor name only
-        list($name,$hash) = explode('#',$name,2);
-        if($hash) return $hash;
+//        list($name,$hash) = explode('#',$name,2); // $hash has not be defined, prevents comment from appearing and PHP warnings
+//        if($hash) return $hash; // $hash has not be defined, prevents comment from appearing and PHP warnings
+       list($name) = explode('#',$name,2);
 
         //trim colons of a namespace link
         $name = rtrim($name,':');
